@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Header = () => {
     return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" style={{ height: "83px" }}>
+        <Navbar collapseOnSelect expand="lg" bg="#131022" variant="dark" style={{ height: "83px" }}>
             <Container>
                 <Navbar.Brand as={Link} to="/home">Mobile Land</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
