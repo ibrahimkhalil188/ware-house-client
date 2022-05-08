@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Notfound = () => {
+const CustomLink = () => {
     return (
         <div>
-            404
+
         </div>
     );
 };
 
-export default Notfound;
+export default CustomLink;
