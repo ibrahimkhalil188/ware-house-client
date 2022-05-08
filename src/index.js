@@ -5,9 +5,6 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter } from 'react-router-dom';
-import 'leaflet/dist/leaflet.css';
-
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

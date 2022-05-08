@@ -19,7 +19,7 @@ const Service = ({ service }) => {
                         Quantity:{quantity}
                         Supplier:{supplier}
                     </Card.Text>
-                    <Button onClick={() => navigate(`/manage/${_id}`)} className='text-white fs-5' variant="outline-dark" style={{ backgroundColor: "#6366f1" }}>Manage Product</Button>
+                    <Button onClick={() => navigate(`/manage/${_id}`)} className='text-white fs-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Manage Product</Button>
                 </Card.Body>
             </Card>
 

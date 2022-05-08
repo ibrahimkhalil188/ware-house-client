@@ -20,12 +20,12 @@ function App() {
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/manage' element={<Manage></Manage>}>
         </Route>
-        <Route path='/manage/:id' element={<Manage></Manage>}>
-          <Route path='additem' element={<AddProduct></AddProduct>}></Route>
-          <Route path='update' element={<Update></Update>}></Route>
-        </Route>
+        <Route path='/manage/:id' element={<Manage></Manage>}> </Route>
+
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/additem' element={<AddProduct></AddProduct>}></Route>
+        <Route path='/update/:id' element={<Update></Update>}></Route>
         <Route path='*' element={<Notfound></Notfound>}></Route>
       </Routes>
 
