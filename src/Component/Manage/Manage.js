@@ -4,16 +4,45 @@ import { useNavigate } from 'react-router-dom';
 
 
 const Manage = () => {
+    const [isReload, setIsReaload] = useState(false)
     const navigate = useNavigate()
     const [services, setServices] = useState([])
     useEffect(() => {
         fetch("https://hidden-harbor-53017.herokuapp.com/allproducts")
             .then(res => res.json())
             .then(data => setServices(data))
-    }, [])
+    }, [isReload])
 
-    const handleRemove = id => {
-        console.log(id);
+    const handleRemove = (id, productQuantity) => {
+        console.log(productQuantity)
+
+        if (productQuantity === 1) {
+            const confirmation = window.confirm("Are you sure?")
+            if (confirmation) {
+                const url = `http://localhost:5000/allproducts/${id}`
+                console.log(url)
+                fetch(url, {
+                    method: "delete"
+                })
+                    .then(res => res.json())
+                    .then(data => alert("Delete success"))
+            }
+        } else {
+            const quantity = productQuantity - 1
+            const data = { quantity }
+            const url = `http://localhost:5000/allproducts/${id}`
+            fetch(url, {
+                method: 'put',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    setIsReaload(!isReload)
+                })
+        }
     }
     return (
         <div className='row container mx-auto'>
@@ -35,7 +64,9 @@ const Manage = () => {
                                         Supplier:{service.supplier}
                                     </Card.Text>
                                     <Button onClick={() => navigate(`/update/${service._id}`)} className='text-white fs-5 me-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Update</Button>
-                                    <Button onClick={() => handleRemove(service._id)} className='text-white fs-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Delete</Button>
+
+                                    <Button onClick={() => handleRemove(service._id, service.quantity)} className='text-white fs-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Delete</Button>
+
                                 </Card.Body>
                             </Card>
                         </div>
