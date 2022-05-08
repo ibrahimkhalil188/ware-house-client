@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Nav } from 'react-bootstrap';
 import { Link, Outlet, useParams } from 'react-router-dom';
 
 const Manage = () => {
@@ -15,8 +14,8 @@ const Manage = () => {
     return (
         <div>
             <h1 className='text-white'>This is update page{id}</h1>
-            <Nav.Link as={Link} to="/additem">Add item</Nav.Link>
-            <Nav.Link as={Link} to="/updateitem">update item</Nav.Link>
+            <Link to="additem">Add item</Link>
+            <Link to="update">update item</Link>
             <div>
                 <Outlet></Outlet>
             </div>
