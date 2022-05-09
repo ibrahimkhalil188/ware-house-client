@@ -1,36 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 
 const Manage = () => {
     const [isReload, setIsReaload] = useState(false)
     const navigate = useNavigate()
     const [services, setServices] = useState([])
+    const { id } = useParams()
+    console.log(id)
     useEffect(() => {
-        fetch("https://hidden-harbor-53017.herokuapp.com/allproducts")
+        fetch(`https://hidden-harbor-53017.herokuapp.com/allproducts/${id}`)
             .then(res => res.json())
             .then(data => setServices(data))
-    }, [isReload])
+    }, [isReload, id])
 
+    console.log(services)
     const handleRemove = (id, productQuantity) => {
         console.log(productQuantity)
 
         if (productQuantity === 1) {
             const confirmation = window.confirm("Are you sure?")
             if (confirmation) {
-                const url = `http://localhost:5000/allproducts/${id}`
+                const url = `https://hidden-harbor-53017.herokuapp.com/allproducts/${id}`
                 console.log(url)
                 fetch(url, {
                     method: "delete"
                 })
                     .then(res => res.json())
-                    .then(data => alert("Delete success"))
+                    .then(data => {
+                        setIsReaload(!isReload)
+                    })
             }
         } else {
             const quantity = productQuantity - 1
             const data = { quantity }
-            const url = `http://localhost:5000/allproducts/${id}`
+            const url = `https://hidden-harbor-53017.herokuapp.com/allproducts/${id}`
             fetch(url, {
                 method: 'put',
                 headers: {
@@ -65,7 +70,7 @@ const Manage = () => {
                                     </Card.Text>
                                     <Button onClick={() => navigate(`/update/${service._id}`)} className='text-white fs-5 me-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Update</Button>
 
-                                    <Button onClick={() => handleRemove(service._id, service.quantity)} className='text-white fs-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Delete</Button>
+                                    <Button onClick={() => handleRemove(service._id, service.quantity)} className='text-white fs-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Delivered</Button>
 
                                 </Card.Body>
                             </Card>

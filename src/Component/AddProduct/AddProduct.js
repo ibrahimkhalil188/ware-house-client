@@ -15,7 +15,7 @@ const AddProduct = () => {
 
         const product = { brand, name, price, quantity, description, email, supplier, img }
 
-        fetch('http://localhost:5000/allproducts', {
+        fetch('https://hidden-harbor-53017.herokuapp.com/allproducts', {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -24,7 +24,8 @@ const AddProduct = () => {
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data);
+                alert("Product added successfully")
+                event.target.reset()
             })
     }
     return (

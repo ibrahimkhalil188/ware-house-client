@@ -9,7 +9,7 @@ const Service = ({ service }) => {
         <div className='col-6 my-5 d-flex justify-content-center'>
 
             <Card style={{ width: '22rem' }}>
-                <Card.Img variant="top" src={img} />
+                <Card.Img style={{ height: "220px", width: "325px" }} variant="top" src={img} />
                 <Card.Body>
                     <Card.Title><h1>{name}</h1></Card.Title>
                     <Card.Text>
