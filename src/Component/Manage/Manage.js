@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Button, Card, Form } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 
 
@@ -15,7 +15,14 @@ const Manage = () => {
             .then(data => setServices(data))
     }, [isReload, id])
 
-    console.log(services)
+    let quantity;
+
+    const addNewQuantity = e => {
+        e.preventDefault()
+        quantity = e.target.quantity.value
+        console.log(quantity)
+    }
+
     const handleRemove = (id, productQuantity) => {
         console.log(productQuantity)
 
@@ -30,10 +37,12 @@ const Manage = () => {
                     .then(res => res.json())
                     .then(data => {
                         setIsReaload(!isReload)
+                        navigate("/")
                     })
             }
         } else {
-            const quantity = productQuantity - 1
+
+            quantity = productQuantity - 1
             const data = { quantity }
             const url = `https://hidden-harbor-53017.herokuapp.com/allproducts/${id}`
             fetch(url, {
@@ -54,18 +63,18 @@ const Manage = () => {
 
             {
                 services.map(service =>
-                    <div className='col-4 ' key={service._id} >
+                    <div className='col-6 ' key={service._id} >
                         <div className='my-5'>
 
-                            <Card style={{ width: '18rem' }}>
+                            <Card className='mx-auto' style={{ width: '18rem' }}>
                                 <Card.Img variant="top" src={service.img} />
                                 <Card.Body>
                                     <Card.Title><h1>{service.name}</h1></Card.Title>
-                                    <Card.Text>
-                                        Brand: {service.brand}
-                                        {service.description}
-                                        Price: ${service.price}
-                                        Quantity:{service.quantity}
+                                    <Card.Text className='fs-4'>
+                                        Brand: {service.brand}<br></br>
+                                        Description: {service.description}<br></br>
+                                        Price: ${service.price}<br></br>
+                                        Quantity:{service.quantity}<br></br>
                                         Supplier:{service.supplier}
                                     </Card.Text>
                                     <Button onClick={() => navigate(`/update/${service._id}`)} className='text-white fs-5 me-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Update</Button>
@@ -77,7 +86,18 @@ const Manage = () => {
                         </div>
                     </div>)
             }
+            <div className='col-6'>
+                <Form onSubmit={addNewQuantity}>
+                    <Form.Group className="mb-3" controlId="formBasicPassword">
+                        <Form.Label>Password</Form.Label>
+                        <Form.Control type="number" name='quantity' placeholder="Password" />
+                    </Form.Group>
 
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Form>
+            </div>
         </div>
 
     );
