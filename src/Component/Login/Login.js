@@ -16,7 +16,7 @@ const Login = () => {
                     <Form.Label>Password</Form.Label>
                     <Form.Control type="password" placeholder="Password" />
                 </Form.Group>
-                <Button className='w-25' style={{ backgroundColor: "#e51a4b" }} type="submit">
+                <Button className='w-25 bg-primary' type="submit">
                     Login
                 </Button>
 
@@ -29,14 +29,14 @@ const Login = () => {
                 <h5>Don't have any account? <Link to="/register">Register Please</Link></h5>
             </div>
             <div className='d-flex justify-content-center align-items-center'>
-                <div className='w-50' style={{ height: "2px", backgroundColor: "#e51a4b" }}>
+                <div className='w-50 bg-primary' style={{ height: "2px" }}>
                 </div>
                 <div className='mx-2'>OR</div>
-                <div className='w-50' style={{ height: "2px", backgroundColor: "#e51a4b" }}>
+                <div className='w-50 bg-primary' style={{ height: "2px" }}>
                 </div>
             </div>
             <div>
-                <div className='w-75 mx-auto fs-5 m-5 p-2 rounded text-center' style={{ backgroundColor: "#e51a4b" }}>
+                <div className='w-75 mx-auto fs-5 m-5 p-2 rounded text-center bg-primary'>
                     <img className='mx-4' style={{ width: "53px" }} src={google} alt="" />
                     Login with Google
                 </div>
