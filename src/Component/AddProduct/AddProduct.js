@@ -12,8 +12,9 @@ const AddProduct = () => {
         const description = event.target.description.value
         const brand = event.target.brand.value
         const img = event.target.image.value
+        const sold = 0;
 
-        const product = { brand, name, price, quantity, description, email, supplier, img }
+        const product = { brand, name, price, quantity, description, email, supplier, img, sold }
 
         fetch('https://hidden-harbor-53017.herokuapp.com/allproducts', {
             method: 'POST', // or 'PUT'
@@ -53,7 +54,7 @@ const AddProduct = () => {
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Control type="number" placeholder=" product quantity" name="quantity" required />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Group className="mb-3" controlId="formBasicImage">
                     <Form.Control type="text" placeholder=" product image url" name="image" required />
                 </Form.Group>
                 <Button variant="primary" type="submit">

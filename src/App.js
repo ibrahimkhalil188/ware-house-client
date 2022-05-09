@@ -10,6 +10,7 @@ import Notfound from './Component/Notfound/Notfound';
 import Manage from './Component/Manage/Manage';
 import AddProduct from './Component/AddProduct/AddProduct';
 import Update from './Component/Update/Update';
+import Inventory from './Component/Inventory/Inventory';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
+        <Route path='/inventory' element={<Inventory></Inventory>}></Route>
         <Route path='/manage' element={<Manage></Manage>}>
         </Route>
         <Route path='/manage/:id' element={<Manage></Manage>}> </Route>

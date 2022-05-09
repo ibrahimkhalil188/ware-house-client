@@ -8,55 +8,57 @@ const Manage = () => {
     const navigate = useNavigate()
     const [services, setServices] = useState([])
     const { id } = useParams()
-    console.log(id)
     useEffect(() => {
         fetch(`https://hidden-harbor-53017.herokuapp.com/allproducts/${id}`)
             .then(res => res.json())
             .then(data => setServices(data))
     }, [isReload, id])
 
-    let quantity;
+    const addNewQuantity = event => {
 
-    const addNewQuantity = e => {
-        e.preventDefault()
-        quantity = e.target.quantity.value
-        console.log(quantity)
+        event.preventDefault()
+        const input = parseInt(event.target.quantity.value)
+        const newQuantity = input + parseInt(services[0].quantity)
+
+        const data = { quantity: newQuantity }
+        const url = `https://hidden-harbor-53017.herokuapp.com/allproducts/${id}`
+        fetch(url, {
+            method: 'put',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => response.json())
+            .then(data => {
+                setIsReaload(!isReload)
+            })
+
     }
 
-    const handleRemove = (id, productQuantity) => {
-        console.log(productQuantity)
-
-        if (productQuantity === 1) {
-            const confirmation = window.confirm("Are you sure?")
-            if (confirmation) {
-                const url = `https://hidden-harbor-53017.herokuapp.com/allproducts/${id}`
-                console.log(url)
-                fetch(url, {
-                    method: "delete"
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        setIsReaload(!isReload)
-                        navigate("/")
-                    })
-            }
-        } else {
-
-            quantity = productQuantity - 1
-            const data = { quantity }
-            const url = `https://hidden-harbor-53017.herokuapp.com/allproducts/${id}`
-            fetch(url, {
-                method: 'put',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            })
-                .then(response => response.json())
-                .then(data => {
-                    setIsReaload(!isReload)
-                })
+    const handleDeliver = (id, productQuantity, previousSold) => {
+        if (productQuantity < 1) {
+            alert("you can't deliver Before Add product ")
+            return
         }
+        const quantity = productQuantity - 1
+        const sold = parseInt(previousSold + 1)
+
+        const data = { sold, quantity, }
+
+        const url = `https://hidden-harbor-53017.herokuapp.com/allproducts/${id}`
+        fetch(url, {
+            method: 'put',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+            .then(response => response.json())
+            .then(data => {
+                setIsReaload(!isReload)
+            })
+
     }
     return (
         <div className='row container mx-auto'>
@@ -75,21 +77,21 @@ const Manage = () => {
                                         Description: {service.description}<br></br>
                                         Price: ${service.price}<br></br>
                                         Quantity:{service.quantity}<br></br>
-                                        Supplier:{service.supplier}
+                                        Supplier:{service.supplier}<br></br>
+                                        Sold:{service.sold}
                                     </Card.Text>
                                     <Button onClick={() => navigate(`/update/${service._id}`)} className='text-white fs-5 me-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Update</Button>
 
-                                    <Button onClick={() => handleRemove(service._id, service.quantity)} className='text-white fs-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Delivered</Button>
+                                    <Button onClick={() => handleDeliver(service._id, service.quantity, service.sold)} className='text-white fs-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Delivered</Button>
 
                                 </Card.Body>
                             </Card>
                         </div>
                     </div>)
             }
-            <div className='col-6'>
+            <div className='col-6 d-flex justify-content-center align-items-center'>
                 <Form onSubmit={addNewQuantity}>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
                         <Form.Control type="number" name='quantity' placeholder="Password" />
                     </Form.Group>
 
