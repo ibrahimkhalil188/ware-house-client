@@ -6,7 +6,7 @@ const Inventory = () => {
     const [services, setServices] = useState([])
     const [isReload, setIsReaload] = useState(false)
     useEffect(() => {
-        fetch("http://localhost:5000/allproducts")
+        fetch("https://hidden-harbor-53017.herokuapp.com/allproducts")
             .then(res => res.json())
             .then(data => setServices(data))
     }, [isReload])
