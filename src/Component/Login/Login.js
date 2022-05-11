@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import google from "../../Asset/Logo/google.png"
 import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
@@ -8,6 +8,11 @@ import toast, { Toaster } from 'react-hot-toast';
 
 
 const Login = () => {
+
+    let location = useLocation();
+
+    let from = location.state?.from?.pathname || "/"
+
     const navigate = useNavigate()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -44,6 +49,9 @@ const Login = () => {
         }
     }
 
+
+        ;
+
     const handleLogin = event => {
         event.preventDefault()
 
@@ -60,15 +68,15 @@ const Login = () => {
             toast.error("popup-closed-by-user", { id: "test" })
         }
     }
+
     useEffect(() => {
-        if (user) {
-            toast.success("successfully login")
-            navigate("/")
+        if (user || emailUser) {
+            navigate(from, { replace: true })
         }
         if (error) {
             toast.error(error.message)
         }
-    })
+    }, [emailUser, user, error, from, navigate])
 
 
     if (emailLoading) {
