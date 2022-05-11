@@ -92,7 +92,7 @@ const Manage = () => {
             <div className='col-6 d-flex justify-content-center align-items-center'>
                 <Form onSubmit={addNewQuantity}>
                     <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Control type="number" name='quantity' placeholder="Password" />
+                        <Form.Control type="number" name='quantity' placeholder="Quantity" />
                     </Form.Group>
 
                     <Button variant="primary" type="submit">
