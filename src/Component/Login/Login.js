@@ -51,19 +51,6 @@ const Login = () => {
         if (email && password) {
             signInWithEmailAndPassword(email, password)
         }
-
-
-
-        if (error) {
-            if (error.message.includes("auth/wrong-password")) {
-                toast.error("wrong-password", { id: "test" })
-            }
-            if (error.message.includes("Error (auth/user-not-found)" || "auth/invalid-email " || "(auth/internal-error")) {
-                toast.error("Register please", { id: "test" })
-            }
-            else { toast.error("something else", { id: "test" }) }
-
-        }
     }
 
 
@@ -75,14 +62,11 @@ const Login = () => {
     }
     useEffect(() => {
         if (user) {
-            toast.success(user.email)
-
+            toast.success("successfully login")
+            navigate("/")
         }
         if (error) {
             toast.error(error.message)
-        }
-        if (!error) {
-            navigate("/")
         }
     })
 

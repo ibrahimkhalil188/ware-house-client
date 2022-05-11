@@ -78,21 +78,21 @@ const Register = () => {
             <Form onSubmit={handleRegister}>
                 <Form.Group className="mb-3" controlId="formBasicFullName">
                     <Form.Label>Full name</Form.Label>
-                    <Form.Control type="text" placeholder="Full name" />
+                    <Form.Control type="text" placeholder="Full name" required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control type="email" placeholder="Enter email" onChange={getEmail} />
+                    <Form.Control type="email" placeholder="Enter email" onChange={getEmail} required />
                     <span className='text-danger'>{inputEmailError ? inputEmailError : ""}</span>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" onChange={getPassword} />
+                    <Form.Control type="password" placeholder="Password" onChange={getPassword} required />
                     <span className='text-danger'>{inputError ? inputError : ""}</span>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
                     <Form.Label>Confirm Password</Form.Label>
-                    <Form.Control type="password" placeholder="Confirm Password" onChange={getConfirmPassword} />
+                    <Form.Control type="password" placeholder="Confirm Password" onChange={getConfirmPassword} required />
                     <span className='text-danger'>{inputPasswordError ? inputPasswordError : ""}</span>
                 </Form.Group>
                 <Button className='w-25 bg-primary' type="submit">
