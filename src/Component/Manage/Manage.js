@@ -100,6 +100,11 @@ const Manage = () => {
                     </Button>
                 </Form>
             </div>
+
+
+            <Button className='my-3' onClick={() => navigate("/inventory")}>Manage Inventory</Button>
+            <Button className='my-3' onClick={() => navigate("/additem")}>Add new Item</Button>
+
         </div>
 
     );

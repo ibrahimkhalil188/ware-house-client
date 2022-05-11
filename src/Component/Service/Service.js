@@ -6,6 +6,7 @@ const Service = ({ service }) => {
     const { _id, name, img, description, brand, price, supplier, quantity } = service
     const navigate = useNavigate()
     return (
+
         <div className='col-6 my-5 d-flex justify-content-center'>
 
             <Card style={{ width: '22rem' }}>
@@ -22,8 +23,8 @@ const Service = ({ service }) => {
                     <Button onClick={() => navigate(`/manage/${_id}`)} className='text-white fs-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Manage Product</Button>
                 </Card.Body>
             </Card>
-
         </div>
+
     );
 };
 

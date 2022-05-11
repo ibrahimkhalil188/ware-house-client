@@ -12,6 +12,7 @@ import AddProduct from './Component/AddProduct/AddProduct';
 import Update from './Component/Update/Update';
 import Inventory from './Component/Inventory/Inventory';
 import RequireAuth from './Component/RequireAuth/RequireAuth';
+import MyProducts from './Component/MyProducts/MyProducts';
 
 function App() {
   return (
@@ -20,10 +21,20 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
-        <Route path='/inventory' element={<Inventory></Inventory>}></Route>
+        <Route path='/inventory' element={
+          <RequireAuth>
+            <Inventory></Inventory>
+          </RequireAuth>
+        }></Route>
         <Route path='/manage' element={<Manage></Manage>}>
         </Route>
-        <Route path='/manage/:id' element={<Manage></Manage>}> </Route>
+        <Route path='myproducts' element={<MyProducts></MyProducts>}
+        ></Route>
+        <Route path='/manage/:id' element={
+          <RequireAuth>
+            <Manage></Manage>
+          </RequireAuth>
+        }> </Route>
 
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>

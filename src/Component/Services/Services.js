@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import Service from '../Service/Service';
 
 const Services = () => {
+    const navigate = useNavigate()
     const [services, setServices] = useState([])
     useEffect(() => {
         fetch("https://hidden-harbor-53017.herokuapp.com/allproducts?limit=6")
@@ -26,6 +29,7 @@ const Services = () => {
                     <p>Best selling or rating products will be added here dynaicmaly</p>
                 </div>
             </div>
+            <Button onClick={() => navigate("/inventory")}>Manage Inventory</Button>
         </div>
     );
 };
