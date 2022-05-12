@@ -6,7 +6,7 @@ const Inventory = () => {
     const [services, setServices] = useState([])
     const [isReload, setIsReaload] = useState(false)
     useEffect(() => {
-        fetch("http://localhost:4000/allproducts")
+        fetch("https://hidden-harbor-53017.herokuapp.com/allproducts")
             .then(res => res.json())
             .then(data => setServices(data))
     }, [isReload])
@@ -14,7 +14,7 @@ const Inventory = () => {
     const handleRemove = id => {
         const confirmation = window.confirm("Are you sure?")
         if (confirmation) {
-            const url = `http://localhost:4000/allproducts/${id}`
+            const url = `https://hidden-harbor-53017.herokuapp.com/allproducts/${id}`
             fetch(url, {
                 method: "delete"
             })

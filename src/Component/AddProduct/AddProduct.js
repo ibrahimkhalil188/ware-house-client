@@ -19,7 +19,7 @@ const AddProduct = () => {
 
         const product = { brand, name, price, quantity, description, email, supplier, img, sold }
 
-        fetch('http://localhost:4000/allproducts', {
+        fetch('https://hidden-harbor-53017.herokuapp.com/allproducts', {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',

@@ -7,7 +7,7 @@ const Update = () => {
     const { id } = useParams()
     const [product, setProduct] = useState([])
     useEffect(() => {
-        const url = `http://localhost:4000/allproducts/${id}`
+        const url = `https://hidden-harbor-53017.herokuapp.com/allproducts/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))

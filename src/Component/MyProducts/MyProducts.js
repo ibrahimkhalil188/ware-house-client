@@ -10,7 +10,7 @@ const MyProducts = () => {
     const [userProducts, setUserProducts] = useState([])
 
     useEffect(() => {
-        const url = `http://localhost:4000/allproducts?email=${user?.email}`
+        const url = `https://hidden-harbor-53017.herokuapp.com/allproducts?email=${user?.email}`
         fetch(url)
             .then(res => res.json())
             .then(data => setUserProducts(data))
@@ -19,7 +19,7 @@ const MyProducts = () => {
     const handleRemove = id => {
         const confirmation = window.confirm("Are you sure?")
         if (confirmation) {
-            const url = `http://localhost:4000/allproducts/${id}`
+            const url = `https://hidden-harbor-53017.herokuapp.com/allproducts/${id}`
             fetch(url, {
                 method: "delete"
             })
