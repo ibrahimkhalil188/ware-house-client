@@ -12,15 +12,15 @@ const Service = ({ service }) => {
             <Card style={{ width: '22rem' }}>
                 <Card.Img style={{ height: "220px", width: "325px" }} variant="top" src={img} />
                 <Card.Body>
-                    <Card.Title><h1>{name}</h1></Card.Title>
-                    <Card.Text>
-                        Brand: {brand}
-                        {description}
-                        Price: ${price}
-                        Quantity:{quantity}
+                    <Card.Title><h3>{name}</h3></Card.Title>
+                    <Card.Text className='fs-5'>
+                        Brand: {brand}<br></br>
+                        Description: {description}<br></br>
+                        Price: ${price}<br></br>
+                        Quantity:{quantity}<br></br>
                         Supplier:{supplier}
                     </Card.Text>
-                    <Button onClick={() => navigate(`/manage/${_id}`)} className='text-white fs-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Manage Product</Button>
+                    <Button onClick={() => navigate(`/manage/${_id}`)} className='text-white fs-5'>Manage Product</Button>
                 </Card.Body>
             </Card>
         </div>

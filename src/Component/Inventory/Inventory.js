@@ -35,8 +35,8 @@ const Inventory = () => {
                             <Card className='mx-auto' style={{ width: '18rem', height: " 650px" }}>
                                 <Card.Img variant="top" src={service.img} />
                                 <Card.Body>
-                                    <Card.Title><h1>{service.name}</h1></Card.Title>
-                                    <Card.Text className='fs-4'>
+                                    <Card.Title><h3>{service.name}</h3></Card.Title>
+                                    <Card.Text className='fs-5'>
                                         Brand: {service.brand}<br></br>
                                         Description: {service.description}<br></br>
                                         Price: ${service.price}<br></br>
@@ -44,7 +44,7 @@ const Inventory = () => {
                                         Supplier:{service.supplier}
                                     </Card.Text>
 
-                                    <Button onClick={() => handleRemove(service._id)} className='text-white fs-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Delete</Button>
+                                    <Button onClick={() => handleRemove(service._id)} className='text-white fs-5' >Delete</Button>
 
                                 </Card.Body>
                             </Card>

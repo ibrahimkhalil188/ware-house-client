@@ -80,9 +80,9 @@ const Manage = () => {
                                         Supplier:{service.supplier}<br></br>
                                         Sold:{service.sold}
                                     </Card.Text>
-                                    <Button onClick={() => navigate(`/update/${service._id}`)} className='text-white fs-5 me-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Update</Button>
+                                    <Button onClick={() => navigate(`/update/${service._id}`)} className='text-white fs-5 me-5'>Update</Button>
 
-                                    <Button onClick={() => handleDeliver(service._id, service.quantity, service.sold)} className='text-white fs-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Delivered</Button>
+                                    <Button onClick={() => handleDeliver(service._id, service.quantity, service.sold)} className='text-white fs-5' >Delivered</Button>
 
                                 </Card.Body>
                             </Card>
