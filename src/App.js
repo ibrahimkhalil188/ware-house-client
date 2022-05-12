@@ -13,6 +13,7 @@ import Update from './Component/Update/Update';
 import Inventory from './Component/Inventory/Inventory';
 import RequireAuth from './Component/RequireAuth/RequireAuth';
 import MyProducts from './Component/MyProducts/MyProducts';
+import Blogs from './Component/Blogs/Blogs';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
             <AddProduct></AddProduct>
           </RequireAuth>
         }></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/update/:id' element={<Update></Update>}></Route>
         <Route path='*' element={<Notfound></Notfound>}></Route>
       </Routes>
