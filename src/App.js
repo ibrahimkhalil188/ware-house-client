@@ -15,6 +15,7 @@ import RequireAuth from './Component/RequireAuth/RequireAuth';
 import MyProducts from './Component/MyProducts/MyProducts';
 import Blogs from './Component/Blogs/Blogs';
 
+
 function App() {
   return (
     <div style={{ backgroundColor: "#131022" }}>
@@ -46,6 +47,7 @@ function App() {
         }></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/update/:id' element={<Update></Update>}></Route>
+
         <Route path='*' element={<Notfound></Notfound>}></Route>
       </Routes>
 

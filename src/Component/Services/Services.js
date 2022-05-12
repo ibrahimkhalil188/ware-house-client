@@ -7,7 +7,7 @@ const Services = () => {
     const navigate = useNavigate()
     const [services, setServices] = useState([])
     useEffect(() => {
-        fetch("https://hidden-harbor-53017.herokuapp.com/allproducts?limit=6")
+        fetch("http://localhost:4000/allproducts?limit=6")
             .then(res => res.json())
             .then(data => setServices(data))
     }, [])

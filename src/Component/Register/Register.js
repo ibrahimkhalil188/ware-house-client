@@ -60,8 +60,8 @@ const Register = () => {
     const handleRegister = event => {
         event.preventDefault()
         createUserWithEmailAndPassword(email, password)
-        navigate("/")
         toast.success("user created")
+        navigate("/verify")
 
     }
     if (error) {

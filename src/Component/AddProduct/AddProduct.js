@@ -1,7 +1,10 @@
 import React from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../firebase.init';
 
 const AddProduct = () => {
+    const [user, loading, error] = useAuthState(auth)
     const addProduct = event => {
         event.preventDefault()
         const supplier = event.target.supplier.value
@@ -16,7 +19,7 @@ const AddProduct = () => {
 
         const product = { brand, name, price, quantity, description, email, supplier, img, sold }
 
-        fetch('https://hidden-harbor-53017.herokuapp.com/allproducts', {
+        fetch('http://localhost:4000/allproducts', {
             method: 'POST', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
@@ -34,7 +37,7 @@ const AddProduct = () => {
             <h1 className='text-center my-4'>Do you want to add new product?</h1>
             <Form onSubmit={addProduct} className='w-50 mx-auto'>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Control type="email" placeholder="Your email" name="email" required />
+                    <Form.Control type="email" placeholder="Your email" name="email" value={user?.email} readOnly required />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Control type="text" placeholder="Your name" name="supplier" required />

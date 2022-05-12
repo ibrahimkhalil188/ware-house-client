@@ -3,18 +3,20 @@ import React from 'react';
 const Blogs = () => {
     return (
         <div className='row text-white container mx-auto'>
-            <div className='col-6'>
+            <div className='col-6 mb-5'>
                 <h4 className='my-4'> Difference between javascript and nodejs</h4>
                 <div>
-                    <ol className='my-5'>
-                        <strong>Javascript</strong>
+                    <strong>Javascript</strong>
+                    <ol className='my-3'>
+
                         <li>javascript is a programing language for write script</li>
                         <li>javascript  use for client-side</li>
                         <li>primary javascript run only browser</li>
 
                     </ol>
-                    <ol className='my-5'>
-                        <strong>Node js</strong>
+                    <strong>Node js</strong>
+                    <ol className='my-3'>
+
                         <li>Node js is a runtime of javascript</li>
                         <li>node js use for server-side</li>
                         <li>Now javascript run out side of the browser with help of Node js</li>
@@ -23,33 +25,35 @@ const Blogs = () => {
             </div>
             <div className='col-6'>
                 <h4>When should you use nodejs and when should you use mongodb</h4>
-                <ol>
-                    <ul className='my-5'>
-                        <strong>When should you use nodejs
 
-                        </strong>
-                        <li>When application is event driven and i/o intensive base</li>
-                        <li>when application perform with API and data without having CUP intensive task or data analysis</li>
-                        <li>when my primary programing language is javascript</li>
-                    </ul>
-                    <ul className='my-5'>
-                        <strong>When should you use mongodb</strong>
-                        <li>when my data structure is like xml or json</li>
-                        <li>when my data structure is like Non-realational</li>
-                        <li>Scalability in managing lot's of data</li>
-                    </ul>
-                </ol>
+                <strong>When should you use nodejs
+                </strong>
+                <ul className='my-3'>
+
+                    <li>When application is event driven and i/o intensive base</li>
+                    <li>when application perform with API and data without having CUP intensive task or data analysis</li>
+                    <li>when my primary programing language is javascript</li>
+                </ul>
+                <strong>When should you use mongodb</strong>
+                <ul className='my-3'>
+
+                    <li>when my data structure is like xml or json</li>
+                    <li>when my data structure is like Non-realational</li>
+                    <li>Scalability in managing lot's of data</li>
+                </ul>
+
             </div>
             <div className='col-6'>
                 <h4>Differences between sql and nosql databases.</h4>
+                <strong>SQL</strong>
                 <ul>
-                    <strong>SQL</strong>
+
                     <li>SQL Relational database management system</li>
                     <li>This database have predefine schema</li>
                     <li>Vertically Scalable</li>
                 </ul>
+                <strong>NOSQL</strong>
                 <ul>
-                    <strong>NOSQL</strong>
                     <li>NOSQL Non-Relational database management system</li>
                     <li>This database have dynamic schema</li>
                     <li>horizontally Scalable</li>

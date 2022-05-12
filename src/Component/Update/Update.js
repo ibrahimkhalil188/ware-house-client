@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Update = () => {
+    const navigate = useNavigate()
     const { id } = useParams()
     const [product, setProduct] = useState([])
     useEffect(() => {
-        const url = `https://hidden-harbor-53017.herokuapp.com/allproducts/${id}`
+        const url = `http://localhost:4000/allproducts/${id}`
         fetch(url)
             .then(res => res.json())
             .then(data => setProduct(data))
     }, [id])
-    console.log(id)
-    console.log(product)
+
     return (
         <div>
             <Card className='mx-auto' style={{ width: '22rem' }}>
@@ -26,7 +26,7 @@ const Update = () => {
                         Quantity:{product[0]?.quantity}
                         Supplier:{product[0]?.supplier}
                     </Card.Text>
-                    <Button className='text-white fs-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Manage Product</Button>
+                    <Button onClick={() => navigate("/inventory")} className='text-white fs-5' variant="outline-dark" style={{ backgroundColor: "#e51a4b" }}>Manage Product</Button>
                 </Card.Body>
             </Card>
         </div>

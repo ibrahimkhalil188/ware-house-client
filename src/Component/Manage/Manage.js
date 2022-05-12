@@ -9,7 +9,7 @@ const Manage = () => {
     const [services, setServices] = useState([])
     const { id } = useParams()
     useEffect(() => {
-        fetch(`https://hidden-harbor-53017.herokuapp.com/allproducts/${id}`)
+        fetch(`http://localhost:4000/allproducts/${id}`)
             .then(res => res.json())
             .then(data => setServices(data))
     }, [isReload, id])
@@ -21,7 +21,7 @@ const Manage = () => {
         const newQuantity = input + parseInt(services[0].quantity)
 
         const data = { quantity: newQuantity }
-        const url = `https://hidden-harbor-53017.herokuapp.com/allproducts/${id}`
+        const url = `http://localhost:4000/allproducts/${id}`
         fetch(url, {
             method: 'put',
             headers: {
@@ -46,7 +46,7 @@ const Manage = () => {
 
         const data = { sold, quantity, }
 
-        const url = `https://hidden-harbor-53017.herokuapp.com/allproducts/${id}`
+        const url = `http://localhost:4000/allproducts/${id}`
         fetch(url, {
             method: 'put',
             headers: {
