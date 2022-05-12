@@ -1,0 +1,9 @@
+service data ta ki dynamic korbo naki static R korle dynamic kmn howa dorker
+
+fetch data by category
+
+best sold products
+
+
+
+port ta change kora lage kno

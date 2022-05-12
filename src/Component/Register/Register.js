@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
 const Register = () => {
     const navigate = useNavigate()
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
+
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [inputError, setInputError] = useState("")
@@ -60,18 +64,11 @@ const Register = () => {
     const handleRegister = event => {
         event.preventDefault()
         createUserWithEmailAndPassword(email, password)
-        toast.success("user created")
-        navigate("/verify")
-
+        navigate(from)
     }
     if (error) {
         toast.error(error.message)
     }
-    useEffect(() => {
-        if (user) {
-            toast.success(user.email)
-        }
-    })
     return (
         <div className='w-50 mx-auto text-white'>
             <h1 className='text-center'>Register please</h1>
