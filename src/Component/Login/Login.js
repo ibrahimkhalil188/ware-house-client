@@ -61,14 +61,6 @@ const Login = () => {
         }
     }
 
-
-    if (emailUser) {
-
-        if (error.message.includes("auth/popup-closed-by-user")) {
-            toast.error("popup-closed-by-user", { id: "test" })
-        }
-    }
-
     useEffect(() => {
         if (user || emailUser) {
             navigate(from, { replace: true })
@@ -84,11 +76,14 @@ const Login = () => {
     }
     useEffect(() => {
         if (emailError) {
-            toast.success("User created successfully", { id: "test" })
-            navigate("/")
+            if (emailError.message.includes("Firebase: Error (auth/popup-closed-by-user)")) {
+                toast.error("Popup closed by User", { id: "test" })
+            }
+            else {
+                toast.error(emailError.message, { id: "test" })
+            }
         }
-    }, [navigate, emailError])
-
+    }, [emailError])
 
     return (
         <div className='w-50 mx-auto text-white'>
